@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Menu from './components/menu/Menu.js';
-import './App.css';
+import React, { Component } from 'react'
+import Menu from './components/menu/Menu.js'
+import './App.css'
 
 class App extends Component {
 
@@ -8,8 +8,8 @@ class App extends Component {
 
         return (
             <Menu />
-        );
+        )
     }
 }
 
-export default App;
+export default App

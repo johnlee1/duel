@@ -1,42 +1,61 @@
-import React, { Component } from 'react';
-import { LineItems, LineItemForm } from './lineitem/index.js';
+import React, { Component } from 'react'
+import { Items, ItemForm } from './item/index.js'
+import { addItem, generateId } from '../../lib/item-helpers.js' 
+import './Menu.css'
 
 class Menu extends Component {
 
     constructor() {
         super();
         this.state = {
-            items: [
-                {id: 1, expense: "line item 1", cost: 10}, 
-                {id: 2, expense: "line item 2", cost: 11}, 
-            ],
-            expense: '',
+            items: [],
             cost: '',
+            expense: '',
             total: '',
         };
-        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleEmptySubmit = this.handleEmptySubmit.bind(this)
     }
 
     handleInputChange(event) {
-        const value = event.target.value;
-        const name = event.target.name;
+        let value = event.target.value
+        const name = event.target.name
+        if (name === 'cost') value = Number(value)
+        this.setState({[name]: value})
+    }
+
+    handleSubmit(evt) {
+        evt.preventDefault()
+        const newId = generateId()
+        const newItem = {id: newId, 
+                         cost: this.state.cost, 
+                         expense: this.state.expense}
+        const updatedItems = addItem(this.state.items, newItem)
         this.setState({
-            [name]: value,
-        });
+            items: updatedItems,
+            cost: '',
+            expense: '',
+        })
+    }
+
+    handleEmptySubmit(evt) {
+        evt.preventDefault()
     }
 
     render() {
-
+        const submitHandler = this.state.expense ? this.handleSubmit : this.handleEmptySubmit
         return (
             <div className="App container">
                 <h1>Duel</h1>
-                <LineItems items={this.state.items} />
-                <LineItemForm handleInputChange={this.handleInputChange} 
-                              expense={this.state.expense} 
-                              cost={this.state.cost} />
+                <Items items={this.state.items} />
+                <ItemForm handleInputChange={this.handleInputChange}
+                          handleSubmit={submitHandler}
+                          expense={this.state.expense} 
+                          cost={this.state.cost} />
             </div>
         );
     }
 }
 
-export default Menu;
+export default Menu
