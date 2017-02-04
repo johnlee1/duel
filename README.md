@@ -1,3 +1,4 @@
 # Duel
 
-React app bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+An app for keeping track of finances. <br />
+Built with react. 
