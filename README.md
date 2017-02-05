@@ -1,4 +1,9 @@
-# Duel
+# Duel UI
 
 An app for keeping track of finances. <br />
-Built with react. 
+
+## prerequisites
+- [create-react-app](https://github.com/facebookincubator/create-react-app)
+
+## developing
+Run `npm start`. 
