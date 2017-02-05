@@ -1,11 +1,8 @@
 .App {
-    margin-top: 10%;
+    margin-top: 7%;
 }
 
 h1 {
     text-align: center;
-}
-
-li {
-    list-style-type: none;
+    margin-bottom: 7%;
 }

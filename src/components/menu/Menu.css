@@ -1,3 +1,28 @@
+form {
+    display: flex;
+}
+
+.expense {
+    flex: 1;
+}
+
+h2 {
+    margin-bottom: 7%;
+}
+
+.big-number {
+    font-size: 5rem;
+    text-align: center;
+}
+
+.center {
+    text-align: center;
+}
+
+.cost, .expense {
+    margin: 0.75rem;
+}
+
 .submitBtn {
     display: none;
 }
